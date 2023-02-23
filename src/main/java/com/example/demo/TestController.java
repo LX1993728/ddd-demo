@@ -30,8 +30,8 @@ public class TestController {
         userDo.setBirth(new Date());
         userDo.setTelephone("18737652345");
         userDo.setAddressDoList(new ArrayList<AddressDo>(){{
-            add(new AddressDo("收货人1","123456","中国","河南", "周口"));
-            add(new AddressDo("收货人2","7890","中国","北京", "北京"));
+            add(new AddressDo("收货人1","123456","中国","河南", "周口", "太康县"));
+            add(new AddressDo("收货人2","7890","中国","北京", "北京", "昌平区"));
         }});
         Optional<UserDo> userDoOpt = userDomainService.registerUser(userDo);
         return userDoOpt.isPresent() ? userDoOpt.get() : "注册失败";

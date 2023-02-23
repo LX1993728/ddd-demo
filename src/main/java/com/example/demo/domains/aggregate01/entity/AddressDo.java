@@ -20,6 +20,7 @@ public class AddressDo {
     // 收货人地址
     private String country;
     private String province;
+    private String city;
     private String detail;
 
     // 处理非持久化的职责业务方法

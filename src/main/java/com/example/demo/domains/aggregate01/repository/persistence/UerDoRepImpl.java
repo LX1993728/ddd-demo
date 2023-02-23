@@ -40,12 +40,11 @@ public class UerDoRepImpl implements UserDoRepository {
     public Optional<UserDo> saveUserDo(UserDo userDo) {
         Assert.notNull(userDo, "userDo cannot be null");
         UserPo userPo = UserDoMapper.INSTANCE.toPo(userDo);
-        Long userId = userDao.saveAndFlush(userPo).getId();
+        Long userId = userDao.save(userPo).getId();
         if (CollectionUtils.isNotEmpty(userDo.getAddressDoList())){
             List<AddressPo> addressPoList = AddrDoMapper.INSTANCE.toPoList(userDo.getAddressDoList());
             addressPoList.forEach(addressPo -> addressPo.setUserId(userId));
             addressDao.saveAll(addressPoList);
-            addressDao.flush();
         }
         return getUserDoByUserId(userId);
     }
