@@ -28,5 +28,6 @@ public class ProductPo implements Serializable {
     private String imageUrl;
     private String description; // 描述
     private Long stock;
+    private Long price; // 分
     private Long version; // 乐观版本
 }

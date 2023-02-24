@@ -29,4 +29,7 @@ public class AddressDo {
 
     // 处理非持久化的职责业务方法
     // ......
+    public String getAddrStr(){
+        return String.format("%s %s %s 具体住址: %s", country, province, city, detail);
+    }
 }

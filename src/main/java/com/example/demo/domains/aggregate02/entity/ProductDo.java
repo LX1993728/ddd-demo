@@ -1,6 +1,8 @@
 package com.example.demo.domains.aggregate02.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -8,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDo {
     /**
      * 商品ID
@@ -29,6 +33,7 @@ public class ProductDo {
     private String imageUrl;
     private String description; // 描述
     private Long version;
+    private Long price; // 分
 
     /**
      * 真实项目中一个商品对应多个SKU

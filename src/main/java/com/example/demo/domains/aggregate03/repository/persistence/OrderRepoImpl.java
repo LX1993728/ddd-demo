@@ -48,14 +48,17 @@ public class OrderRepoImpl implements OrderRepository {
     @Transactional(rollbackOn = Exception.class)
     public Optional<OrderDo> createOrder(OrderDo orderDo) {
         // TODO: 进行关键字段校验
+        OrderPo orderPo = OrderDoMapper.INSTANCE.toPo(orderDo);
+        OrderPo savedOrderPo = orderDao.save(orderPo);
+
         Assert.isTrue(CollectionUtils.isNotEmpty(orderDo.getOrderItems()), "参数不合法");
         List<OrderItemPo> orderItemPos = OrderItemDoMapper.INSTANCE.toPoList(orderDo.getOrderItems());
-        orderItemPos.forEach(itemPo -> itemPo.setOrderId(orderDo.getId()));
+        orderItemPos.forEach(itemPo -> itemPo.setOrderId(savedOrderPo.getId()));
         orderItemDao.saveAll(orderItemPos);
 
-        OrderPo orderPo = OrderDoMapper.INSTANCE.toPo(orderDo);
-        orderDao.save(orderPo);
 
-        return getOrder(orderDo);
+        return getOrder(new OrderDo(){{
+            setId(savedOrderPo.getId());
+        }});
     }
 }

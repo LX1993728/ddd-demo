@@ -4,11 +4,12 @@ import com.example.demo.domains.aggregate03.entity.OrderDo;
 import com.example.demo.domains.aggregate03.entity.OrderStatus;
 import com.example.demo.domains.aggregate03.repository.facade.OrderRepository;
 import com.example.demo.domains.aggregate03.service.OrderDomainService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Optional;
 
-
+@Service
 public class OrderDomainServImpl implements OrderDomainService {
     @Resource
     private OrderRepository orderRepository;
