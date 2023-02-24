@@ -2,6 +2,7 @@ package com.example.demo.domains.aggregate01.repository.po;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -9,10 +10,11 @@ import java.util.Date;
 @ToString
 @Data
 @Entity
-@Table(name = "person")
-public class UserPo {
+@Table(name = "user")
+public class UserPo implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 30)

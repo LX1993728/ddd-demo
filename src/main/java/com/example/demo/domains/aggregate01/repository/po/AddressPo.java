@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -15,9 +16,10 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "address")
-public class AddressPo {
+public class AddressPo implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // 关联用户

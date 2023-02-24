@@ -13,6 +13,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class AddressDo {
+    private Long id;
+
+    // 关联用户
+    private Long userId;
     // 收货人姓名
     private String receiverName;
     // 收货人电话
